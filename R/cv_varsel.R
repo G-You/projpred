@@ -797,7 +797,7 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
         verbose = verbose_search, opt = opt, search_terms = search_terms,
         est_runtime = FALSE, ...
       )
-
+t
       # Run the performance evaluation for the submodels along the predictor
       # ranking:
       perf_eval_out <- perf_eval(
@@ -840,7 +840,11 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
       }
       dot_args <- list(...)
       `%do_projpred%` <- doRNG::`%dorng%`
+      pb <- txtProgressBar(max = iterations, style = 3)
+      progress <- function(n) setTxtProgressBar(pb, nloo)
+      opts <- list(progress = progress)
       res_cv <- foreach::foreach(
+        .options.snow = opts,
         run_index = seq_along(inds),
         .export = c("one_obs", "dot_args"),
         .noexport = c("mu_offs_oscale", "loglik_forPSIS", "psisloo", "y_lat_E",
