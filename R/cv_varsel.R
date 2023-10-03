@@ -840,9 +840,12 @@ t
       }
       dot_args <- list(...)
       `%do_projpred%` <- doRNG::`%dorng%`
-      pb <- txtProgressBar(max = iterations, style = 3)
-      progress <- function(n) setTxtProgressBar(pb, nloo)
+      
+      # print out progress
+      pb <- txtProgressBar(max = nloo, style = 3)
+      progress <- function(n) setTxtProgressBar(pb, n)
       opts <- list(progress = progress)
+
       res_cv <- foreach::foreach(
         .options.snow = opts,
         run_index = seq_along(inds),
