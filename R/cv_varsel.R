@@ -785,6 +785,7 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
                         ...) {
       # Observation index:
       i <- inds[run_index]
+      print(i)
 
       # Run the search with the reweighted clusters (or thinned draws) (so the
       # *reweighted* fitted response values from the reference model act as
@@ -841,15 +842,8 @@ t
       dot_args <- list(...)
       `%do_projpred%` <- doRNG::`%dorng%`
       
-      # print out progress
-      pb <- txtProgressBar(max = nloo, style = 3)
-      progress <- function(n) setTxtProgressBar(pb, n)
-      opts <- list(progress = progress)
-
       res_cv <- foreach::foreach(
-        .options.snow = opts,
         .verbose=TRUE,
-        .combine = rbind,
         run_index = seq_along(inds),
         .export = c("one_obs", "dot_args"),
         .noexport = c("mu_offs_oscale", "loglik_forPSIS", "psisloo", "y_lat_E",
