@@ -850,7 +850,7 @@ t
                       "loo_ref_oscale", "validset", "loo_sub", "mu_sub",
                       "loo_sub_oscale", "mu_sub_oscale")
       ) %do_projpred% {
-        do.call(one_obs, c(list(run_index = run_index, verbose_search = FALSE),
+        do.call(one_obs, c(list(run_index = run_index, verbose_search = TRUE),
                            dot_args))
       }
     }
