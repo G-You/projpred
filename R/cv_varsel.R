@@ -785,7 +785,7 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
                         ...) {
       # Observation index:
       i <- inds[run_index]
-      print(i)
+      verb_out(i, verbose=verbose)
 
       # Run the search with the reweighted clusters (or thinned draws) (so the
       # *reweighted* fitted response values from the reference model act as
