@@ -795,7 +795,7 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
         reweighting_args = list(cl_ref = cl_sel, wdraws_ref = exp(lw[, i])),
         method = method, nterms_max = nterms_max, penalty = penalty,
         verbose = verbose_search, opt = opt, search_terms = search_terms,
-        est_runtime = FALSE, ...
+        est_runtime = TRUE, ...
       )
 t
       # Run the performance evaluation for the submodels along the predictor
