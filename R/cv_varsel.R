@@ -437,7 +437,7 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
   # <https://github.com/stan-dev/loo/issues/227#issuecomment-1663499985>.
   warn_orig <- options(warn = 1)
   warn_capt <- utils::capture.output({
-    psisloo <- loo::psis(-loglik_forPSIS, cores = 1, r_eff = NA)
+    psisloo <- loo::psis(-loglik_forPSIS, r_eff = NA)
   }, type = "message")
   options(warn_orig)
   warn_capt <- setdiff(warn_capt, "")
@@ -672,7 +672,7 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
                                       asNamespace("loo"))
       warn_orig <- options(warn = 1)
       warn_capt <- utils::capture.output({
-        sub_psisloo <- importance_sampling_func(-log_lik_ref, cores = 1,
+        sub_psisloo <- importance_sampling_func(-log_lik_ref,
                                                 r_eff = NA)
       }, type = "message")
       options(warn_orig)
@@ -785,7 +785,6 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
                         ...) {
       # Observation index:
       i <- inds[run_index]
-      verb_out(i, verbose=verbose)
 
       # Run the search with the reweighted clusters (or thinned draws) (so the
       # *reweighted* fitted response values from the reference model act as
