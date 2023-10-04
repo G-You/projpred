@@ -848,6 +848,8 @@ t
 
       res_cv <- foreach::foreach(
         .options.snow = opts,
+        .verbose=TRUE,
+        .combine = rbind,
         run_index = seq_along(inds),
         .export = c("one_obs", "dot_args"),
         .noexport = c("mu_offs_oscale", "loglik_forPSIS", "psisloo", "y_lat_E",
