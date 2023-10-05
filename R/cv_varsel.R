@@ -786,7 +786,6 @@ loo_varsel <- function(refmodel, method, nterms_max, ndraws,
                         ...) {
       # Observation index:
       i <- inds[run_index]
-      search_terms_was_null = FALSE
 
       # Run the search with the reweighted clusters (or thinned draws) (so the
       # *reweighted* fitted response values from the reference model act as
@@ -840,7 +839,8 @@ t
       if (!requireNamespace("doRNG", quietly = TRUE)) {
         stop("Please install the 'doRNG' package.")
       }
-      dot_args <- list(...)
+      #dot_args <- list(...)
+      dot_args <- list(search_terms_was_null = FALSE)
       `%do_projpred%` <- doRNG::`%dorng%`
       
       res_cv <- foreach::foreach(
