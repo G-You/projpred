@@ -206,7 +206,8 @@ cv_varsel.refmodel <- function(
   nterms_max <- args$nterms_max
   nclusters <- args$nclusters
   search_terms <- args$search_terms
-  search_terms_was_null <- args$search_terms_was_null
+  #search_terms_was_null <- args$search_terms_was_null
+  search_terms_was_null <- FALSE
   # Parse arguments specific to cv_varsel():
   args <- parse_args_cv_varsel(
     refmodel = refmodel, cv_method = cv_method, K = K, cvfits = cvfits,
