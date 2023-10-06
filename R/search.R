@@ -1,6 +1,6 @@
 search_forward <- function(p_ref, refmodel, nterms_max, verbose = TRUE, opt,
                            search_terms, est_runtime = TRUE,
-                           search_terms_was_null, ...) {
+                           search_terms_was_null = TRUE, ...) {
   nterms_max_with_icpt <- nterms_max + 1L
   iq <- ceiling(quantile(seq_len(nterms_max_with_icpt), 1:10 / 10))
   if (is.null(search_terms)) {

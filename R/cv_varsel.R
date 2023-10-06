@@ -207,7 +207,7 @@ cv_varsel.refmodel <- function(
   nclusters <- args$nclusters
   search_terms <- args$search_terms
   #search_terms_was_null <- args$search_terms_was_null
-  search_terms_was_null <- FALSE
+  search_terms_was_null <- TRUE
   # Parse arguments specific to cv_varsel():
   args <- parse_args_cv_varsel(
     refmodel = refmodel, cv_method = cv_method, K = K, cvfits = cvfits,
@@ -840,7 +840,7 @@ t
         stop("Please install the 'doRNG' package.")
       }
       #dot_args <- list(...)
-      dot_args <- list(search_terms_was_null = FALSE)
+      dot_args <- list(search_terms_was_null = TRUE)
       `%do_projpred%` <- doRNG::`%dorng%`
       
       res_cv <- foreach::foreach(
